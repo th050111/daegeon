@@ -13,14 +13,13 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
   
   return (
     <Router>
-      {/* isLoggedIn이 참이라면 뒤의 문장 실행 */}
       <Switch>
         {isLoggedIn ? (
 		  <>
-		  <Route exact path="/home">
-                <Home />
+		  <Redirect from="/login" to="/home" />
+		  		  <Route exact path="/home">
+                <Home userObj={userObj}/>
               </Route>
-          <Redirect from="*" to="/home" />
           </>) : (
             <>
               <Route exact path="/login">

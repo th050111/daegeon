@@ -1,13 +1,11 @@
 .main_container{
-    border: 0px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin: auto;
+	width: 1000px;
 }
 
-.login_container{
-    width: 50px; 
-    height: 50px; 
-    margin: auto; 
-    border-radius: 3px; 
-}
 
 .form_container{
     width: 50px;
@@ -37,10 +35,10 @@ input::placeholder {
 
 .form_input{
     width: 800px; 
-    height: 80px; 
+    height: 70px; 
     border: 1px solid; 
-    border-radius: 13px; 
-    border-color: black;
+    border-radius: 1px; 
+    border-color: #AEAEAE;
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -63,7 +61,7 @@ input::placeholder {
 .form_submit_button{
     width: 800px; 
     height: 70px; 
-    background-color: rgb(99,94,105); 
+    background-color: black; 
     border: 1px; 
     border-radius: 10px; 
     color: white; 
@@ -108,7 +106,7 @@ input::placeholder {
 .form_submitregister_button{
     width: 800px; 
     height: 70px; 
-    background-color: rgb(99,94,105); 
+    background-color: black; 
     border: 1px; 
     border-radius: 10px; 
     color: white; 
@@ -118,16 +116,29 @@ input::placeholder {
     justify-content: center;
     align-items: center;   
     margin: auto;
+	font-family: goyang;
 }
 .re-form_input{
     width: 800px; 
     height: 60px; 
     border: 1px solid; 
-    border-radius: 13px; 
-    border-color: black;
+    border-radius: 1px; 
+    border-color: #AEAEAE;
     display: flex;
     justify-content: center;
     align-items: center;   
     margin: auto;
     font-size: 20px;
+}
+
+.dghs_logo {
+	display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin: auto;
+	padding-top: 1px;
+}
+@font-face {
+      src : url("../goyang.TTF"); 
+      font-family: "goyang" ;
 }

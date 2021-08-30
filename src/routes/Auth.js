@@ -1,6 +1,7 @@
-import { authService } from "../myBase";
+import { authService,dbService } from "../myBase";
 import React, { useState } from "react";
 import "../css/Auth.css"
+import {Redirect} from "react-router-dom";
 
 
 
@@ -20,13 +21,28 @@ export default () => {
   	return;
   	 const form = document.login_form;
 	 const inform ={
-	 	"email": "tgim4253@pess.cnehs.kr",
+	 "tgim4253@pess.cnehs.kr": {
+		"code":"1234" 
+	 },
+	 "cloudmc@pess.cnehs.kr": {
+		"code":"1234" 
+	 },
+	 "tgim3370@pess.cnehs.kr": {
+		"code":"1234" 
+	 },
+		 "seojin0122@pess.cnehs.kr": {
+		"code":"1234" 
+	 },
+		 "insa5557@pess.cnehs.kr": {
 		"code":"1234" 
 	 }
+	 }
     const chkPw = checkValidPassword(form);
-	 const chkEmail = form.email.value === inform.email;
-	 const chkCode = form.confirm_code.value === inform.code;
+	 const chkEmail = inform[form.email.value]?true:false;
+	 console.log(chkEmail)
+	 const chkCode = form.confirm_code.value === (inform[form.email.value]?inform[form.email.value].code:"");
 	 let chkPw2 = checkValidPassword2(form);
+	 console.log((inform[email]!=undefined?inform[email].code:""))
 	 
 
 
@@ -125,10 +141,9 @@ function checkValidPassword2(form) {
   
   
   return (
-    <div id="container" className="main_container">
+  <>
 		  {isLogIn?(<Login resister={toResister} checkLogIn={checkLogIn}/>):(<Resister resister={toResister} checkLogIn={checkLogIn}/>)}
-                
-            </div>
+               </>
   )
 }
 
@@ -143,13 +158,23 @@ const onSubmit = async (event) => {
 	   	 const form = document.login_form;
 	const email = form.email.value;
 	const password = form.password.value;
-	 if(checkLogIn()){
+	let isError=false;
+	
 	 let data;
+	 if(checkLogIn()){
 		 try {
         data = await authService.createUserWithEmailAndPassword(email, password);
     } catch (error) {
+	 	isError=true;
       console.log(error.message);
     }
+	 }
+	 if(data){
+	 	await dbService.collection("users").doc(data.user.uid+"").set({
+	 	createAt:`${Date.now()}`,
+		name:"익명",
+		email:`${email}`,
+	 })
 	 }
   }
 
@@ -157,10 +182,7 @@ const onSubmit = async (event) => {
  <>
  	<div style={{padding:" 30p"}}></div>
                 <form name="login_form" action="/cookie" method="get">
-                    
-                    <div className="form_title_div">
-                        <p className="form_title_p">회원가입</p>
-                    </div>
+                    <img src="/image/dghs.png" alt="dghs" class="dghs_logo" width="200"/>
                     
                      <div>
                         <div>
@@ -242,10 +264,7 @@ const Login = ({resister,checkLogIn}) => {
 	<>
         <div style={{padding: "70px"}}></div>
 		<form name="login_form" submit={onSubmit}>
-                    
-                    <div className="form_title_div">
-                        <p className="form_title_p">로그인</p>
-                    </div>
+         <img src="/image/dghs.png" alt="dghs" class="dghs_logo" width="200"/>
                     
                     <div>
                         <div>
