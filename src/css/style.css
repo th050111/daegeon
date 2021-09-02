@@ -18,7 +18,8 @@ a {
 
 .board_wrap {
     width: 1500px;
-    margin: 100px auto;
+    margin: auto;
+	padding-top:100px;
 }
 
 .board_title {
@@ -30,7 +31,7 @@ a {
 }
 
 .board_title p {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 1.4rem;
 }
 
@@ -177,13 +178,13 @@ a {
 
 .board_view .cont {
     padding: 15px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
     line-height: 160%;
     font-size: 1.4rem;
 }
 
 .board_write {
-    border-top: 2px solid #fff;
+    border-top: 1px solid #000;
 }
 
 .board_write .title,
@@ -192,7 +193,7 @@ a {
 }
 
 .board_write .info {
-    border-top: 1px dashed #fff;
+    border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
     font-size: 0;
 }
@@ -248,4 +249,41 @@ a {
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+}
+.board_page {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_page a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    line-height: 100%;
+}
+
+.board_page a.bt {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.board_page a.num {
+    padding-top: 9px;
+    font-size: 1.4rem;
+}
+
+.board_page a.num.on {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.board_page a:first-child {
+    border-left: 1px solid #ddd;
 }

@@ -1,0 +1,159 @@
+body {
+  font-size: 18px;
+  font-weight: 400;
+  overflow-x: hidden;
+  color: #5f6061;
+}
+
+p { line-height: 2; }
+a, button { transition: all 0.3s ease; }
+a:hover { text-decoration: none; }
+label { margin-bottom: 0; }
+input { padding: 13px 20px; }
+
+.up_bar {
+    width: 100px;
+}
+
+.container {
+    text-align: center;
+    margin: 0px auto;
+    border: 0.5px solid #AEAEAE;
+    width: 80%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+}
+.container_2{
+    text-align: center;
+    margin: 0px auto;
+    border: 0.5px solid #AEAEAE;
+    width: 80%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+.item {
+    width:500px;
+}
+
+.item_1.active {
+  border: 1px solid #98999a;
+  color: #98999a;
+}
+
+html {
+    line-height:1.15;
+}
+
+.dghs_logo {
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin: auto;
+    padding-top: 0px;
+}
+nav{
+    font-size: 12pt;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    opacity: 0.8;
+}
+nav ul{
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+}
+
+nav li{
+    
+}
+
+nav a {
+    line-height: 70px;
+    height: 70px;
+}
+
+nav li a{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+nav li:last-child a{
+    border-right: 0;
+}
+
+nav a:hover, nav a:active{
+    
+}
+    
+
+nav a#pull{
+    display: none;
+}
+
+html {
+   -webkit-touch-callout:none;
+   -webkit-user-select:none;
+   -webkit-tap-highlight-color:#CEC1C5;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    background-color: #CEC1C5;
+    text-align: center;
+}
+
+li{
+    display: inline-block;
+}
+
+li a{
+    color: black;
+    text-align: center;
+    padding: 14.5px 16px;
+    text-decoration: none;
+}
+
+li a:hover{
+    color: #CEC1C5;
+    font-weight:normal;
+}
+
+.menu {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    max-width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+    color: black;
+    position: absolute;
+    z-index: 1;
+}
+
+.timer {
+    font-size: 150px;
+    color: black;
+}
+
+.container_3 {
+    text-align: center;
+    margin: 0px auto;
+    border: 0.5px solid #AEAEAE;
+    width: 80%;
+    padding-bottom: 10%;
+    padding-top: 10%;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}

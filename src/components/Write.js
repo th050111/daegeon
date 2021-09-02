@@ -32,7 +32,7 @@ export default ({ userObj, toggleType, editDoc}) => {
 			body: body,
 			title: title,
 		 	});
-			toggleType("board");
+			toggleType("view");
 			return;
 		 }
 	  const number = await dbService.collection("inform").doc("page").get().then(async (snap)=>{
@@ -64,6 +64,8 @@ export default ({ userObj, toggleType, editDoc}) => {
 			title: title,
 			 number:number,
 			 date:`${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일`,
+			 like:1,
+			 likeList:[],
 		 })
 		 console.log(pageList)
 		 await dbService.collection("inform").doc("page").update({

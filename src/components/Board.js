@@ -31,10 +31,13 @@ export default ({ userObj,toggleType }) => {
    setType("view");
   }, [viewDocNumber])
  
- const onTitleClick = doc => {
+ const onTitleClick = (doc,index) => {
 	if(doc===viewDocNumber)
 		setType("view")
-	setViewDocNumber(doc)
+	setViewDocNumber({
+		index:index,
+	...doc,
+	})
  }
  
  const onEdit = (id, article)=>{
@@ -50,7 +53,7 @@ export default ({ userObj,toggleType }) => {
     {!isLoading?(<>
 	 	<div>
 	 	{{view:<View userObj={userObj} doc={viewDocNumber} close={(newType)=>setType(newType)} onEdit={onEdit}/>,
-		edit:<Write userObj={userObj} editDoc={editDoc} toggleType={(type)=>{setType(type);setViewDocNumber("")}}/>,
+		edit:<Write userObj={userObj} editDoc={editDoc} toggleType={(type)=>{setType(type);}}/>,
 		board:<>
 			<div class="board_wrap">
         <div class="board_title">
@@ -70,10 +73,10 @@ export default ({ userObj,toggleType }) => {
 						return (
 							 <div key={index}>
 								  <div class="num">{doc.number}</div>
-								  <div class="title"><a onClick={()=>{onTitleClick(doc)}}>{doc.title}</a></div>
+								  <div class="title"><a onClick={()=>{onTitleClick(doc,index)}}>{doc.title}</a></div>
 								  <div class="writer">익명</div>
 								  <div class="date">{doc.date}</div>
-								  <div class="count">1</div>
+								  <div class="count">{doc.like}</div>
 							 </div>
 						)
 					})
@@ -101,6 +104,7 @@ const View = ({userObj, doc, onEdit, close})=>{
 	const [isOwner,setIsOwner] = useState(false)
 	
 	useEffect(async () => {
+		console.log(doc)
 		setIsLoading(true)
 	  const document = await dbService.collection("documents").doc(doc.id).get().then((snap)=>snap.data())
 	  setArticle(document)
@@ -110,6 +114,19 @@ const View = ({userObj, doc, onEdit, close})=>{
 	  	setIsOwner(true)
 		console.log(doc.writerId, userObj.uid)
   }, [doc])
+	
+	const onLike = async () => {
+		if(doc.likeList.find((el)=>{
+		if(el === userObj.uid)  {
+    return true;
+  }}) === undefined)
+		{
+			await dbService.collection("inform").doc("page").get().then((snap)=>{
+				let newList = snap.data().articles[doc.index]
+				newList
+				})
+		}
+	}
 	
 	return(
 	<>
@@ -146,6 +163,7 @@ const View = ({userObj, doc, onEdit, close})=>{
 							{article.body}
 						 </div>
 					</div>
+					<button onClick={onLike}>좋아요</button>
 					<div class="bt_wrap">
 						 <a class="emphasize" onClick={()=>close("board")} class="on">목록</a>
 {isOwner && <a onClick={()=>onEdit(doc.id,article)}>수정</a>}
