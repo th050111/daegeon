@@ -122,8 +122,15 @@ const View = ({userObj, doc, onEdit, close})=>{
   }}) === undefined)
 		{
 			await dbService.collection("inform").doc("page").get().then((snap)=>{
-				let newList = snap.data().articles[doc.index]
-				newList
+				let newList = snap.data().articles;
+				newList[index] = {
+					like:newList[index].like+1,
+					likeList:newList[index].likeList.unShift(userObj.uid),
+					...newList[index]
+				}
+				await dbService.collection("inform").doc("page").update({
+					articles:newList
+				})
 				})
 		}
 	}
